@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How much of a hippie are you?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .question {
+      display: none;
+    }
+
+    .question.active {
+      display: block;
+    }
+
+    .result {
+      font-weight: bold;
+      margin-top: 30px;
+      font-size: 1.2em;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #1976d2;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #135ba1;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: #eee;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #F4C430;
+      width: 0%;
+      transition: width 0.3s ease-in-out;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 18px;
+      }
+    }
+    .footer {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  font-size: 20px;
+  color: #777;
+  opacity: 0.8;
+}
+
+  </style>
+</head>
+<body>
+
+<h1>How much of a hippie are you?</h1>
+
+<div class="progress-bar">
+  <div class="progress" id="progressBar"></div>
+</div>
+
+<form id="quizForm">
+
+  <!-- 1 -->
+  <div class="question active" data-index="0">
+    <p>1. Do you walk barefoot outside of your house?</p>
+    <input type="radio" name="q1" value="hippie">Yes<br>
+    <input type="radio" name="q1" value="nothippie">Only if in a rush<br>
+    <input type="radio" name="q1" value="eric">No, never, it's disgusting<br>
+  </div>
+
+  <!-- 2 -->
+  <div class="question" data-index="1">
+    <p>2. Do you take clothes that people put out on benches?</p>
+    <input type="radio" name="q2" value="hippie">Yes, with great pleasure<br>
+    <input type="radio" name="q2" value="nothippie">Rarely, only if I really liked something<br>
+    <input type="radio" name="q2" value="eric">No, never, it's disgusting<br>
+  </div>
+
+  <!-- 3 -->
+  <div class="question" data-index="2">
+    <p>3. Can you put on clothes that you just found on a bench without washing them first?</p>
+    <input type="radio" name="q3" value="hippie">Yes, I have no problem with that<br>
+    <input type="radio" name="q3" value="nothippie">Yes, but would prefer to wash them<br>
+    <input type="radio" name="q3" value="eric">No, never, it's disgusting<br>
+  </div>
+
+  <!-- 4 -->
+  <div class="question" data-index="3">
+    <p>4. Would you take something out of a trash bin?</p>
+    <input type="radio" name="q4" value="hippie">Yes, I do it all the time<br>
+    <input type="radio" name="q4" value="nothippie">Only if it's something incredible and lies on top<br>
+    <input type="radio" name="q4" value="eric">No, never, it's disgusting<br>
+  </div>
+
+  <!-- 5 -->
+  <div class="question" data-index="4">
+    <p>5. Would you take food from the street?</p>
+    <input type="radio" name="q5" value="hippie">Yes, I do it all the time<br>
+    <input type="radio" name="q5" value="nothippie">Only if it's in a closed package<br>
+    <input type="radio" name="q5" value="eric">No, never, it's disgusting<br>
+  </div>
+
+  <!-- 6 -->
+  <div class="question" data-index="5">
+    <p>6. Would you take food from someone who you don't know?</p>
+    <input type="radio" name="q6" value="hippie">Yes, absolutely<br>
+    <input type="radio" name="q6" value="nothippie">Only if the person looks normal<br>
+    <input type="radio" name="q6" value="eric">No, never, it's disgusting and dangerous<br>
+  </div>
+
+  <!-- 7 -->
+  <div class="question" data-index="6">
+    <p>7. Would you wear colorful striped/ornamented clothes from ethnic shops?</p>
+    <p><img src="ethnic.jpeg" alt="Ethnic example"></p>
+    <input type="radio" name="q7" value="hippie">Yes, I do it all the time<br>
+    <input type="radio" name="q7" value="nothippie">Only if I have no other choice<br>
+    <input type="radio" name="q7" value="eric">No, never, it's disgusting<br>
+  </div>
+
+  <!-- 8 -->
+  <div class="question" data-index="7">
+    <p>8. Do you ever wear "harem pants" (sharovary)?</p>
+    <input type="radio" name="q8" value="hippie">Yes, all the time<br>
+    <input type="radio" name="q8" value="nothippie">Sometimes<br>
+    <input type="radio" name="q8" value="eric">No, never, only hippies wear them<br>
+  </div>
+
+  <!-- 9 -->
+  <div class="question" data-index="8">
+    <p>9. Can you dance when no one else is dancing?</p>
+    <input type="radio" name="q9" value="hippie">Yes, absolutely<br>
+    <input type="radio" name="q9" value="nothippie">I'm too shy<br>
+    <input type="radio" name="q9" value="eric">No, never, only hippies do that<br>
+  </div>
+
+  <!-- 10 -->
+  <div class="question" data-index="9">
+    <p>10. Do you know what this is?</p>
+    <p><img src="vargan.jpeg" alt="Vargan"></p>
+    <input type="radio" name="q10" value="hippie">Yes! (And maybe even own it)<br>
+    <input type="radio" name="q10" value="nothippie">I think I do, but I never wanted to play it<br>
+    <input type="radio" name="q10" value="eric">No, maybe some hippie does<br>
+  </div>
+
+  <button type="button" id="nextBtn">Next</button>
+</form>
+
+<div class="result" id="result"></div>
+
+<div id="restartContainer" style="display:none; margin-top: 20px;">
+  <button onclick="restartQuiz()">Take the test again</button>
+</div>
+
+<script>
+  const questions = document.querySelectorAll('.question');
+  const nextBtn = document.getElementById('nextBtn');
+  const progressBar = document.getElementById('progressBar');
+  let currentQuestion = 0;
+
+  function updateProgress() {
+    const percent = ((currentQuestion + 1) / questions.length) * 100;
+    progressBar.style.width = percent + "%";
+  }
+
+  updateProgress();
+
+  nextBtn.addEventListener('click', () => {
+    const current = questions[currentQuestion];
+    const selected = current.querySelector('input:checked');
+
+    if (!selected) {
+      alert("Please select an answer!");
+      return;
+    }
+
+    current.classList.remove('active');
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+      questions[currentQuestion].classList.add('active');
+      updateProgress();
+
+      if (currentQuestion === questions.length - 1) {
+        nextBtn.textContent = "Submit";
+      }
+    } else {
+      document.getElementById('quizForm').style.display = "none";
+      showResult();
+    }
+  });
+
+  function showResult() {
+    const types = { hippie: 0, nothippie: 0, eric: 0 };
+
+    for (let i = 1; i <= 10; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selected) types[selected.value]++;
+    }
+
+    let result = '';
+    let imageHTML = '';
+
+    if (types.hippie >= 8) {
+      result = "You're a true hippie! Don't try to deny it.";
+      imageHTML = '<br><img src="hippies_photo.jpg" alt="Hippie">';
+    } else if (types.nothippie >= 8) {
+      result = "You're a normie but you tend to hippyishness.";
+      imageHTML = '<br><img src="normie.jpg" alt="Regular Person">';
+    } else if (types.eric >= 8) {
+      result = "You're Eric Cartman.";
+      imageHTML = '<br><img src="hippie crap.jpg" alt="Eric Cartman">';
+    } else {
+      result = "You're non-binary in this question.";
+      imageHTML = '<br><img src="kitty_nonbinary.jpg" alt="Surprised kitty">';
+    }
+
+    document.getElementById("result").innerHTML = result + imageHTML;
+    document.getElementById("restartContainer").style.display = "block";
+  }
+
+  function restartQuiz() {
+    currentQuestion = 0;
+    document.getElementById("quizForm").reset();
+    document.getElementById("quizForm").style.display = "block";
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("restartContainer").style.display = "none";
+    nextBtn.textContent = "Next";
+    questions.forEach(q => q.classList.remove('active'));
+    questions[0].classList.add('active');
+    updateProgress();
+  }
+</script>
+<footer class="footer">
+  <small>&copy; Nika Faynberg, 2025</small>
+</footer>
+
+</body>
+</html>
